@@ -1,0 +1,97 @@
+1.
+
+def arithmetic_operation(s):
+    l = s.split()
+    l1 = list(map(int,l[0:3:2]))
+    if l[1] == '+':
+         return l1[0] + l1[1]
+    elif l[1] == '-':
+         return l1[0] - l1[1]
+    elif l[1] == '*':
+         return l1[0] * l1[1]
+    else:
+        if l1[1] == 0:
+            return -1
+        else:
+            return l1[0] / l1[1]
+            
+
+print(arithmetic_operation("12 + 12"))
+print(arithmetic_operation("12 - 12"))
+print(arithmetic_operation("12 * 12"))
+print(arithmetic_operation("12 / 12"))
+print(arithmetic_operation("12 / 0"))
+
+2.
+
+import math
+def distance(xA,yA,xB,yB):
+    return math.sqrt((xA-xB)*(xA-xB)+(yA-yB)*(yA-yB))
+
+def perimeter(l):
+    return round(distance(l[0][0],l[0][1],l[1][0],l[1][1])+distance(l[0][0],l[0][1],l[2][0],l[2][1])+distance(l[2][0],l[2][1],l[1][0],l[1][1]),2)
+
+print(perimeter( [ [15, 7], [5, 22], [11, 1] ] ))
+print(perimeter(  [ [0, 0], [0, 1], [1, 0] ] ))
+print(perimeter([[-10, -10],[10, 10 ],[-10, 10]]))
+
+3.
+
+import numpy as np
+
+def tallest_skyscraper(l):
+    arr = np.array(l)
+    height =[]
+    for i in range(len(arr)):
+        height.append((arr[:,i] == 1).sum())
+    
+    return max(height)
+print(tallest_skyscraper([ [0, 0, 0, 0], [0, 1, 0, 0], [0, 1, 1, 0], [1, 1, 1, 1] ]))
+print(tallest_skyscraper([ [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 1, 0], [1, 1, 1, 1] ]))
+
+print(tallest_skyscraper([
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [1, 1, 1, 0],
+  [1, 1, 1, 1]
+]))
+
+
+4.
+
+def bonus(days):
+    if days < 32:
+        return 0
+    
+    elif days > 32 and days < 41:
+        return (days-32) * 325
+    
+    elif days > 40 and days < 49:
+        return 8 * 325 + (days - 40) * 550
+    
+    elif days > 48:
+        return 8 * 325 + 8 * 550 + (days - 48) * 600
+    
+print(bonus(15))
+print(bonus(37))
+print(bonus(50))    
+
+5.
+
+def is_disarium(n):
+    sum1 = 0 
+    l = list(map(int,str(n)))
+    for i in range(0,len(l)):
+        sum1 += l[i]**(i+1)
+
+    if sum1 == n:
+        return True
+    else:
+        return False
+    
+print(is_disarium(75))
+print(is_disarium(135))
+print(is_disarium(544))
+print(is_disarium(518))
+print(is_disarium(466))
+print(is_disarium(8))
